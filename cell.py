@@ -4,7 +4,7 @@ import settings
 import ctypes
 import sys
 
-...
+
 
 class Cell:
     """Класс клетки на поле"""

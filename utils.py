@@ -1,6 +1,6 @@
 import settings
 
-...
+
 
 def get_height_by_percentage(percentage: int) -> float:
     """Высчитывает процент от высоты"""
