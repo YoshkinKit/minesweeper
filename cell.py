@@ -35,7 +35,7 @@ class Cell:
             width=12,
             height=4,
         )
-        
+
         button.bind('<Button-1>', self.left_click_actions) # Left click
         button.bind('<Button-3>', self.right_click_actions) # Right click
         
@@ -50,13 +50,19 @@ class Cell:
             if not self.surrounded_cells_mines_amount:
                 for cell_object in self.surrounded_cells_list: 
                     cell_object.show_cell()
-            
+                    cell_object.cell_button_object.configure(
+                        bg=cell_object.get_color()
+                    )
+
             self.show_cell()
-            
+            self.cell_button_object.configure(
+                        bg=self.get_color()
+            )
+
             # If Mines count is equal to the cells left count, player won
             if Cell.cell_count == settings.MINES_COUNT:
                 ctypes.windll.user32.MessageBoxW(0, 'Congratulations! You won the game!', 'Game Over', 0)
-        
+
         # Cancel Left and Right click events if cell is already opened:
         self.cell_button_object.unbind('<Button-1>')
         self.cell_button_object.unbind('<Button-3>')   
@@ -66,7 +72,7 @@ class Cell:
         
         if not self.is_mine_suspected:
             self.cell_button_object.configure(
-                bg='orange'
+                bg='#535757'
             )
             
             self.is_mine_suspected = True
@@ -74,7 +80,7 @@ class Cell:
             self.cell_button_object.configure(
                 bg='SystemButtonFace'
             )
-            
+
             self.is_mine_suspected = False
 
     @property
@@ -109,10 +115,9 @@ class Cell:
 
     def show_cell(self) -> None:
         """Открывает клетку"""
-        
+
         if not self.is_opened:
             Cell.cell_count -= 1
-            
             self.cell_button_object.configure(
                 text=self.surrounded_cells_mines_amount \
                 if self.surrounded_cells_mines_amount else ''
@@ -135,12 +140,30 @@ class Cell:
 
     def show_mine(self) -> None:
         """Открывает мину и завершает игру"""
-        
-        self.cell_button_object.configure(bg='red')
 
         ctypes.windll.user32.MessageBoxW(0, 'You have been blown up', 'Game Over', 0)
         sys.exit()
 
+    def get_color(self) -> str:
+        """
+        В зависимости от кол-ва мин вокруг клетки
+        задает определенный цвет
+        """
+
+        colors_dict = {
+            0: '#A1A6A6',
+            1: '#36F585',
+            2: '#DEF018',
+            3: '#F08418',
+            4: '#F01C18',
+            5: '#F018AC',
+            6: '#DA18F0',
+            7: '#181CF0',
+            8: '#28F0F7',
+        }
+
+        return colors_dict.get(self.surrounded_cells_mines_amount)
+    
     @staticmethod
     def create_cell_count_label(location) -> None:
         """Создает текст счетчика оставшихся клеток"""
