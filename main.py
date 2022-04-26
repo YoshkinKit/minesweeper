@@ -20,7 +20,7 @@ top_frame = Frame(
     height=utils.get_height_by_percentage(25),
 )
 top_frame.place(
-    x=0, 
+    x=0,
     y=0,
 )
 
@@ -32,8 +32,8 @@ game_title = Label(
     font=('', 30),
 )
 game_title.place(
-    x=utils.get_width_by_percentage(25),
-    y=0,
+    x=utils.get_width_by_percentage(32),
+    y=utils.get_height_by_percentage(8),
 )
 
 left_frame = Frame(
@@ -71,8 +71,8 @@ for x in range(settings.GRID_SIZE):
 # Call the label from the Cell class
 Cell.create_cell_count_label(left_frame)
 Cell.cell_count_label_object.place(
-    x=0,
-    y=0,
+    x=utils.get_width_by_percentage(2),
+    y=utils.get_height_by_percentage(15),
 )
 
 Cell.randomize_mines()
