@@ -1,4 +1,5 @@
 from tkinter import *
+from cheat_button import Cheat_Button
 import settings
 import utils
 from cell import Cell
@@ -34,6 +35,13 @@ game_title = Label(
 game_title.place(
     x=utils.get_width_by_percentage(32),
     y=utils.get_height_by_percentage(8),
+)
+
+cheat_button = Cheat_Button()
+cheat_button.create_button_object(top_frame)
+cheat_button.button_object.place(
+    x=0,
+    y=0,
 )
 
 left_frame = Frame(
