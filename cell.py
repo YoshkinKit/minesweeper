@@ -56,12 +56,17 @@ class Cell:
 
             self.show_cell()
             self.cell_button_object.configure(
-                        bg=self.get_color()
+                bg=self.get_color()
             )
 
             # If Mines count is equal to the cells left count, player won
             if Cell.cell_count == settings.MINES_COUNT:
-                ctypes.windll.user32.MessageBoxW(0, 'Congratulations! You won the game!', 'Game Over', 0)
+                ctypes.windll.user32.MessageBoxW(
+                0,
+                'Congratulations! You won the game!',
+                'Game Over',
+                0
+            )
 
         # Cancel Left and Right click events if cell is already opened:
         self.cell_button_object.unbind('<Button-1>')
@@ -97,7 +102,8 @@ class Cell:
                 
                 surrounded_cells.append(self.get_cell_by_axis(i, j))
         
-        surrounded_cells = [cell for cell in surrounded_cells if cell is not None]
+        surrounded_cells = [cell for cell in surrounded_cells \
+                            if cell is not None]
         
         return surrounded_cells
 
@@ -141,7 +147,12 @@ class Cell:
     def show_mine(self) -> None:
         """Открывает мину и завершает игру"""
 
-        ctypes.windll.user32.MessageBoxW(0, 'You have been blown up', 'Game Over', 0)
+        ctypes.windll.user32.MessageBoxW(
+            0, 
+            'You have been blown up',
+            'Game Over', 
+            0
+        )
         sys.exit()
 
     def get_color(self) -> str:

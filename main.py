@@ -17,11 +17,11 @@ top_frame = Frame(
     root,
     bg='black', 
     width=settings.WIDTH,
-    height=utils.get_height_by_percentage(25)
+    height=utils.get_height_by_percentage(25),
 )
 top_frame.place(
     x=0, 
-    y=0
+    y=0,
 )
 
 game_title = Label(
@@ -29,35 +29,36 @@ game_title = Label(
     bg='black',
     fg='white',
     text='Minesweeper Game',
-    font=('', 30)
-    )
+    font=('', 30),
+)
 game_title.place(
     x=utils.get_width_by_percentage(25),
-    y=0
+    y=0,
 )
 
 left_frame = Frame(
     root,
     bg='black',
     width=utils.get_width_by_percentage(25),
-    height=utils.get_height_by_percentage(75)
+    height=utils.get_height_by_percentage(75),
 )
 left_frame.place(
     x=0, 
-    y=utils.get_height_by_percentage(25)
+    y=utils.get_height_by_percentage(25),
 )
 
 center_frame = Frame(
     root,
     bg='black', 
     width=utils.get_width_by_percentage(75),
-    height=utils.get_height_by_percentage(75)
+    height=utils.get_height_by_percentage(75),
 )
 center_frame.place(
     x=utils.get_width_by_percentage(25),
-    y=utils.get_height_by_percentage(25)
+    y=utils.get_height_by_percentage(25),
 )
 
+# Creating field of size GRID_SIZExGRID_SIZE
 for x in range(settings.GRID_SIZE):
     for y in range(settings.GRID_SIZE):
         cell = Cell(x, y)
@@ -71,7 +72,7 @@ for x in range(settings.GRID_SIZE):
 Cell.create_cell_count_label(left_frame)
 Cell.cell_count_label_object.place(
     x=0,
-    y=0
+    y=0,
 )
 
 Cell.randomize_mines()
