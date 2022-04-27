@@ -1,4 +1,4 @@
-from tkinter import Button
+from tkinter import Button, Frame
 from cell import Cell
 
 
@@ -9,7 +9,7 @@ class Cheat_Button:
         self.button_object = None
         self.is_clicked = False
 
-    def create_button_object(self, location) -> None:
+    def create_button_object(self, location: Frame) -> None:
         """Создает объект кнопки и биндит клавиши к ней"""
 
         button = Button(
@@ -18,7 +18,6 @@ class Cheat_Button:
                 height=4,
                 bg='Blue'
                 )
-
 
         button.bind('<Button-1>', self.left_click_actions)
 
@@ -36,10 +35,9 @@ class Cheat_Button:
 
     def show_or_hide_all_mines(self) -> None:
         """Показывает или скрывает все мины"""
-        mine_list: list[Cell] = [cell for cell in Cell.all_cells_list if cell.is_mine]
+        mine_list = [cell for cell in Cell.all_cells_list if cell.is_mine]
 
         if self.is_clicked:
-
             for mine in mine_list:
                 mine.cell_button_object.configure(
                     bg='#434570'

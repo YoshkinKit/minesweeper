@@ -1,4 +1,4 @@
-from tkinter import Button, Label
+from tkinter import Button, Label, Frame
 import random
 import settings
 import ctypes
@@ -27,7 +27,7 @@ class Cell:
     def __repr__(self) -> str:
         return f'Cell({self.x}, {self.y})'
 
-    def create_button_object(self, location) -> None:
+    def create_button_object(self, location: Frame) -> None:
         """Создает объект кнопки и биндит клавиши миши к ней"""
         
         button = Button(

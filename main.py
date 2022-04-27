@@ -1,8 +1,8 @@
 from tkinter import *
-from cheat_button import Cheat_Button
 import settings
 import utils
 from cell import Cell
+from cheat_button import Cheat_Button
 
 
 
