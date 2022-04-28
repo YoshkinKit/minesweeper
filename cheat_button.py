@@ -2,6 +2,7 @@ from tkinter import Button, Frame
 from cell import Cell
 
 
+
 class Cheat_Button:
     """Читерская кнопка показывает где мины"""
 
@@ -35,6 +36,7 @@ class Cheat_Button:
 
     def show_or_hide_all_mines(self) -> None:
         """Показывает или скрывает все мины"""
+        
         mine_list = [cell for cell in Cell.all_cells_list if cell.is_mine]
 
         if self.is_clicked:
