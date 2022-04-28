@@ -33,7 +33,7 @@ class Cell:
         button = Button(
             location,
             width=12,
-            height=4,
+            height=5,
         )
 
         button.bind('<Button-1>', self.left_click_actions) # Left click
