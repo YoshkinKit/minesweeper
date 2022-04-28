@@ -70,7 +70,7 @@ class Cell:
 
         # Cancel Left and Right click events if cell is already opened:
         self.cell_button_object.unbind('<Button-1>')
-        self.cell_button_object.unbind('<Button-3>')   
+        self.cell_button_object.unbind('<Button-3>') 
 
     def right_click_actions(self, _) -> None:
         """Логика клетки при нажатии ПКМ"""

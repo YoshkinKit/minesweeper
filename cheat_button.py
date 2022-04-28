@@ -16,7 +16,7 @@ class Cheat_Button:
                 location,
                 width=12,
                 height=4,
-                bg='Blue'
+                bg='Black'
                 )
 
         button.bind('<Button-1>', self.left_click_actions)
